@@ -35,3 +35,5 @@ This is real world value, accepted the world over and not just a points system. 
 <tr><td>583 701 - 648 500</td><td>271.19 BND</td><td>17 573 393.38 BND</td></tr>
 <tr><td>...until block 3 046 101 where rewards are locked at 5 BND</td></tr>
 </tbody></table>
+
+<a href="https://blocknode.tech" title="Blocknode Website" target="_blank">View our website for more details</a>
