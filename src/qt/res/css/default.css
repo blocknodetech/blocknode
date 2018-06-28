@@ -34,7 +34,7 @@ background-size: cover;
 }
 
 QStatusBar {
-background-color:#0e0e0e;
+background-color:#1e1e1e;
 color: #2feece;
 }
 
@@ -120,12 +120,14 @@ QMessageBox {
 }
 
 QProgressBar {
-color: #777;
+color: #000;
+font-weight: bold;
 border:0px solid #0e0e0e;
-border-radius:0px;
-background-color:#2f2f2f;
+border-radius:3px;
+background-color:#1f7e6e;
 padding-left:0px;
 padding-right:0px;
+font-size: 10px;
 }
 
 QProgressBar::chunk {
@@ -172,12 +174,11 @@ color:#333;
 }
 
 QToolTip {
-background-color:#2f2f2f;
-color:#fff;
-font-size: 14px;
+background-color:white;
+font-size: 13px;
 line-height: 1.5em;
-width: 400px;
-padding: 10px;
+/* width: 400px; */
+/* padding: 10px; */
 }
 
 /****************************************************************************************/
@@ -290,7 +291,7 @@ background-color: #2f2f2f;
 }
 
 QComboBox { /* Dropdown Menus */
-border:1px solid #2feece;
+border:0px solid #2feece;
 padding: 3px 5px 3px 5px;
 background:#1f1f1f;
 min-height:25px;
@@ -299,19 +300,20 @@ font-weight: bold;
 }
 
 QComboBox:checked {
-background:#2FEECE;
+background:#3f3f3f;
 }
 
 QComboBox:editable {
 background:#1f1f1f;
 color:#fff;
+outline: none;
 border:0px solid transparent;
 }
 
 QComboBox::drop-down {
 width:25px;
 border:0px;
-background: #2f2f2f; 
+background: #2f2f2f;
 }
 
 QComboBox::down-arrow {
@@ -319,11 +321,10 @@ border-image: url(':/images/downArrow') 0 0 0 0 stretch stretch;
 }
 
 QComboBox QListView {
-background:#1f1f1f;
 border:0px solid #1f1f1f;
 padding-right:2px;
 padding-left:2px;
-color:#2FEECE;
+color:black;
 }
 
 QComboBox QAbstractItemView::item {
@@ -331,7 +332,7 @@ margin:4px;
 }
 
 QComboBox::item {
-color:#fff;
+color:black;
 }
 
 QComboBox::item:alternate {
@@ -969,7 +970,7 @@ padding-right:5px;
 /* Header design for ALL tabs/pages *****************************************************/
 /* Horizontal lines */
 QFrame[frameShape="4"] { /* QFrame::HLine == 0x0004 */
-border:3px dotted #2f2f2f;
+border:1px dotted #0f584c;
 }
 
 /* Headers */
@@ -1045,6 +1046,7 @@ color:#2FEECE;
 font-weight:bold;
 margin-right:5px;
 padding-right:5px;
+font-size: 14px;
 }
 
 QWidget .QFrame#frame_Balances .QLabel#labelWalletStatus { /* Wallet Sync Status */
@@ -1055,7 +1057,6 @@ color: #2FEECE
 
 QWidget .QFrame#frame_Balances .QLabel#labelSpendable { /* Spendable Header */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
-font-size:12px;
 margin-left:18px;
 }
 
@@ -1347,13 +1348,10 @@ QWidget .QFrame#frame_RecentTransactions QListView { /* Transaction List */
 font-weight:normal;
 color: #fff;
 font-size:12px;
-max-width:369px;
 margin-top:12px;
 margin-left:0px;
 }
-QWidget .QFrame#frame_RecentTransactions QListView  {
 
-}
 /**************************** SEND DIALOG ***********************************************/
 
 QDialog#SendCoinsDialog {
@@ -1410,12 +1408,12 @@ padding:2px;
 /* QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLineEdit#splitBlockLineEdit:!focus { /* TX Splitter */
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlChangeLabel { /* Custom Change Address Validation Label */
-font-weight:normal;
+    font-weight:normal;
 }
 
-QDialog#SendCoinsDialog .QScrollArea#scrollArea .QWidget#scrollAreaWidgetContents { /* Send To Widget */
-    background-color: transparent;
 
+QDialog#SendCoinsDialog .QScrollArea#scrollArea .QWidget#scrollAreaWidgetContents { /* Send To Widget */
+    background: transparent;
 }
 
 
@@ -1444,15 +1442,12 @@ margin-right:20px;
 /* To maximize backwards compatibility this formatting has been removed */
 
 QDialog#SendCoinsDialog QLabel#label {
-min-height:27px;
-font-size: 15px;
+    /* font-size: 16px; */
 }
 
 QDialog#SendCoinsDialog QLabel#labelBalance {
-margin-left:0px;
-padding-left:0px;
 color:#2FEECE;
-min-height:27px;
+/* font-size: 16px; */
 }
 
 /**************************** SEND COINS ENTRY ******************************************/
@@ -1460,7 +1455,8 @@ QStackedWidget#SendCoinsEntry {
     border: 0px solid #0e0e0e;
     border-bottom: 1px dotted #0f584c;
     padding-right: 20px;
-    background: transparent;
+    margin: 0;
+    background: rgba(128,128,128,0.1);
 }
 QStackedWidget#SendCoinsEntry .QFrame#SendCoins > .QLabel { /* Send Coin Entry Labels */
 min-width:10px;
@@ -1748,12 +1744,11 @@ min-width: 24px;
 
 /**************************** MASTERNODE LIST *******************************************/
 QWidget#MasternodeList {
-
+    background-color:rgba(14,14,14,.75);
 }
 QWidget#MasternodeList .QFrame#frameList {
-background-color:rgba(14,14,14,.75);
-
-padding-bottom: 10px
+    background-color: none;
+    padding-bottom: 10px
 }
 
 

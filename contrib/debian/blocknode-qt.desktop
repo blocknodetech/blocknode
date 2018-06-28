@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Blocknode
+Comment=Blocknode P2P Cryptocurrency
+Comment[fr]=Blocknode, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Blocknode, eşten eşe kriptografik sanal para birimi
+Exec=blocknode-qt %u
+Terminal=false
+Type=Application
+Icon=blocknode128
+MimeType=x-scheme-handler/blocknode;
+Categories=Office;Finance;

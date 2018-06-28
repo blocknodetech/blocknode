@@ -149,9 +149,12 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
         _BITCOIN_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)],[-lqxcb -lxcb-static])
         AC_DEFINE(QT_QPA_PLATFORM_XCB, 1, [Define this symbol if the qt platform is xcb])
       elif test "x$TARGET_OS" = xdarwin; then
+        dnl (Qt 5.10.1) QT_LIBS="-lQt5ClipboardSupport -lQt5ThemeSupport -lQt5GraphicsSupport -lQt5FontDatabaseSupport -lQt5AccessibilitySupport -lQt5EventDispatcherSupport $QT_LIBS"
         QT_LIBS="-lQt5ClipboardSupport -lQt5CglSupport -lQt5ThemeSupport -lQt5GraphicsSupport -lQt5FontDatabaseSupport -lQt5AccessibilitySupport -lQt5EventDispatcherSupport $QT_LIBS"
         LIBS="-lcups $LIBS"
         AX_CHECK_LINK_FLAG([[-framework IOKit]],[QT_LIBS="$QT_LIBS -framework IOKit"],[AC_MSG_ERROR(could not iokit framework)])
+        dnl (Qt 5.10.1) AX_CHECK_LINK_FLAG([[-framework Carbon]],[QT_LIBS="$QT_LIBS -framework Carbon"],[AC_MSG_ERROR(could not carbon framework)])
+        dnl (Qt 5.10.1) AX_CHECK_LINK_FLAG([[-framework QuartzCore]],[QT_LIBS="$QT_LIBS -framework QuartzCore"],[AC_MSG_ERROR(could not quartzcore framework)])
         _BITCOIN_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)],[-lqcocoa])
         AC_DEFINE(QT_QPA_PLATFORM_COCOA, 1, [Define this symbol if the qt platform is cocoa])
       fi
@@ -342,7 +345,7 @@ dnl Output: QT_LIBS is prepended or configure exits.
 AC_DEFUN([_BITCOIN_QT_CHECK_STATIC_PLUGINS],[
   AC_MSG_CHECKING(for static Qt plugins: $2)
   CHECK_STATIC_PLUGINS_TEMP_LIBS="$LIBS"
-  LIBS="$2 $QT_LIBS $LIBS"
+  LIBS="-L$qt_plugin_path/platforms $2 $QT_LIBS $LIBS"
   AC_LINK_IFELSE([AC_LANG_PROGRAM([[
     #define QT_STATICPLUGIN
     #include <QtPlugin>

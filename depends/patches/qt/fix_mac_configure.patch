@@ -1,0 +1,18 @@
+--- old/qtbase/configure	2018-02-08 10:24:48.000000000 -0800
++++ new/qtbase/configure	2018-03-23 11:20:49.000000000 -0700
+@@ -232,9 +232,12 @@
+ 
+     sdk=$(getSingleQMakeVariable "QMAKE_MAC_SDK" "$1")
+     if [ -z "$sdk" ]; then echo "QMAKE_MAC_SDK must be set when building on Mac" >&2; exit 1; fi
+-    sysroot=$(/usr/bin/xcrun --sdk $sdk --show-sdk-path 2>/dev/null)
+-    if [ -z "$sysroot" ]; then echo "Failed to resolve SDK path for '$sdk'" >&2; exit 1; fi
+-
++    sysroot=$(getSingleQMakeVariable "QMAKE_MAC_SDK_PATH" "$1")
++    if [ -z "$sysroot" ]
++    then
++       sysroot=$(/usr/bin/xcrun --sdk $sdk --show-sdk-path 2>/dev/null)
++       if [ -z "$sysroot" ]; then echo "Failed to resolve SDK path for '$sdk'" >&2; exit 1; fi
++    fi
+     case "$sdk" in
+         macosx*)
+             version_min_flag="-mmacosx-version-min=$(getSingleQMakeVariable QMAKE_MACOSX_DEPLOYMENT_TARGET "$1")"

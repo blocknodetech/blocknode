@@ -1,0 +1,41 @@
+--- old/qtbase/src/plugins/platforms/windows/qwindowscontext.cpp	2018-02-08 10:24:48.000000000 -0800
++++ new/qtbase/src/plugins/platforms/windows/qwindowscontext.cpp	2018-03-22 00:49:42.000000000 -0700
+@@ -83,7 +83,9 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <windowsx.h>
++#if (!defined(USE___UUIDOF) || (defined(USE___UUIDOF) && USE___UUIDOF == 1))
+ #include <comdef.h>
++#endif
+ #include <dbt.h>
+ 
+ QT_BEGIN_NAMESPACE
+@@ -752,6 +754,7 @@
+                           HWND_MESSAGE, NULL, static_cast<HINSTANCE>(GetModuleHandle(0)), NULL);
+ }
+ 
++#if (!defined(USE___UUIDOF) || (defined(USE___UUIDOF) && USE___UUIDOF == 1))
+ // Re-engineered from the inline function _com_error::ErrorMessage().
+ // We cannot use it directly since it uses swprintf_s(), which is not
+ // present in the MSVCRT.DLL found on Windows XP (QTBUG-35617).
+@@ -770,6 +773,7 @@
+          return QString::asprintf("IDispatch error #%u", uint(wCode));
+      return QString::asprintf("Unknown error 0x0%x", uint(comError.Error()));
+ }
++#endif // (!defined(USE___UUIDOF) || (defined(USE___UUIDOF) && USE___UUIDOF == 1))
+ 
+ /*!
+     \brief Common COM error strings.
+@@ -837,10 +841,12 @@
+     default:
+         break;
+     }
++#if (!defined(USE___UUIDOF) || (defined(USE___UUIDOF) && USE___UUIDOF == 1))    
+     _com_error error(hr);
+     result += QByteArrayLiteral(" (");
+     result += errorMessageFromComError(error);
+     result += ')';
++#endif // (!defined(USE___UUIDOF) || (defined(USE___UUIDOF) && USE___UUIDOF == 1))    
+     return result;
+ }
+ 

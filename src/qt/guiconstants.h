@@ -20,22 +20,22 @@ static const int STATUSBAR_ICONSIZE = 16;
 static const bool DEFAULT_SPLASHSCREEN = true;
 
 /* Invalid field background style */
-#define STYLE_INVALID "background:#FF8080"
+#define STYLE_INVALID "background:rgba(238, 47, 119)"
 
 /* Transaction list -- unconfirmed transaction */
-#define COLOR_UNCONFIRMED QColor(47, 238, 206)   // cyan
+#define COLOR_UNCONFIRMED QColor(47, 238, 206) // cyan
 /* Transaction list -- negative amount */
-#define COLOR_NEGATIVE QColor(255, 255, 255) // white
+#define COLOR_NEGATIVE QColor(238, 47, 119) // pink
 /* Transaction list -- bare address (without label) */
-#define COLOR_BAREADDRESS QColor(136, 136, 136)
+#define COLOR_BAREADDRESS QColor(255, 255, 255) // white
 /* Transaction list -- TX status decoration - open until date */
 #define COLOR_TX_STATUS_OPENUNTILDATE QColor(74, 189, 254) // blue
 /* Transaction list -- TX status decoration - offline */
-#define COLOR_TX_STATUS_OFFLINE QColor(192, 192, 192)
+#define COLOR_TX_STATUS_OFFLINE QColor(192, 192, 192) // light
 /* Transaction list -- TX status decoration - default color */
-#define COLOR_BLACK QColor(136, 136, 136)
+#define COLOR_BLACK QColor(255, 255, 255) // white
 /* Transaction list -- TX status decoration - conflicted */
-#define COLOR_CONFLICTED QColor(255, 27, 60) // red
+#define COLOR_CONFLICTED QColor(70, 70, 70) // dark
 
 /* Tooltips longer than this (in characters) are converted into rich text,
    so that they can be word-wrapped.
