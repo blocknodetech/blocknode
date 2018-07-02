@@ -7,7 +7,7 @@ This is real world value, accepted the world over and not just a points system. 
 </p>
 <h3>Coin Specs</h3>
 <table>
-<tbody><tr><td>Algo</td><td>Quark</td></tr>
+<tbody><tr><td>Algo</td><td>SHA256</td></tr>
 <tr><td>Block Time</td><td>120 Seconds</td></tr>
 <tr><td>Max Coin Supply (PoW Phase)</td><td>20 000 000 BND</td></tr>
 <tr><td>Max Coin Supply (PoS Phase)</td><td>Infinite</td></tr>
