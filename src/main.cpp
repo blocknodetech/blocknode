@@ -5847,7 +5847,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // available. If not, ask the first peer connected for them.
         bool fMissingSporks = !pSporkDB->SporkExists(SPORK_14_NEW_PROTOCOL_ENFORCEMENT) &&
                 !pSporkDB->SporkExists(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2) &&
-                !pSporkDB->SporkExists(SPORK_16_ZEROCOIN_MAINTENANCE_MODE);
+                !pSporkDB->SporkExists(SPORK_16_ZEROCOIN_MAINTENANCE_MODE) &&
+                !pSporkDB->SporkExists(SPORK_17_NEW_PROTOCOL_TARGETTIME);
 
         if (fMissingSporks || !fRequestedSporksIDB){
             LogPrintf("asking peer for sporks\n");
@@ -6673,7 +6674,8 @@ int ActiveProtocol()
 
     // SPORK_15 is used for 70911. Nodes < 70911 don't see it and still get their protocol version via SPORK_14 and their
     // own ModifierUpgradeBlock()
-
+    if (IsSporkActive(SPORK_17_NEW_PROTOCOL_TARGETTIME))
+            return MIN_PEER_PROTO_VERSION_TARGETTIME;
     if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
             return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;

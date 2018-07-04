@@ -294,7 +294,7 @@ UniValue spork(const UniValue& params, bool fHelp)
         }
 
         // SPORK VALUE
-        int64_t nValue = params[1].get_int();
+        int64_t nValue = params[1].get_int64();
 
         //broadcast new spork
         if (sporkManager.UpdateSpork(nSporkID, nValue)) {
@@ -536,7 +536,6 @@ UniValue setmocktime(const UniValue& params, bool fHelp)
 #ifdef ENABLE_WALLET
 UniValue getstakingstatus(const UniValue& params, bool fHelp)
 {
-    printf("getstakingstatus\n");
     if (fHelp || params.size() != 0)
         throw runtime_error(
             "getstakingstatus\n"

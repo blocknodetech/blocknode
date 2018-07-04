@@ -1194,7 +1194,7 @@ CAmount CWalletTx::GetLockedCredit() const
         }
 
         // Add masternode collaterals which are handled likc locked coins
-        if (fMasterNode && vout[i].nValue == Params().MasternodeCollateral() * COIN) {
+        else if (fMasterNode && vout[i].nValue == Params().MasternodeCollateral() * COIN) {
             nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
         }
 
@@ -1310,9 +1310,8 @@ CAmount CWalletTx::GetLockedWatchOnlyCredit() const
         if (pwallet->IsLockedCoin(hashTx, i)) {
             nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
         }
-
         // Add masternode collaterals which are handled likc locked coins
-        if (fMasterNode && vout[i].nValue == Params().MasternodeCollateral() * COIN) {
+        else if (fMasterNode && vout[i].nValue == Params().MasternodeCollateral() * COIN) {
             nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
         }
 
