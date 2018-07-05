@@ -4476,7 +4476,8 @@ bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
     }
 
     if (block.nBits != nBitsRequired)
-        return error("%s : incorrect proof of work at %d", __func__, pindexPrev->nHeight + 1);
+        return error("%s : incorrect proof of work at %d: nBits %d nBitsRequired %d",
+            __func__, pindexPrev->nHeight + 1, block.nBits, nBitsRequired);
 
     if (block.IsProofOfStake()) {
         uint256 hashProofOfStake;
