@@ -39,8 +39,10 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         uint256 bnTargetLimit = (~uint256(0) >> 24);
         int64_t nTargetSpacing = 60;
         int64_t nTargetTimespan = 60 * 40;
-        if (IsSporkActive(SPORK_17_NEW_PROTOCOL_TARGETTIME) && 
-            pindexLast->nHeight > 10615) {
+
+        if (IsSporkActive(SPORK_17_NEW_PROTOCOL_TARGETTIME) &&
+                ((Params().NetworkID() == CBaseChainParams::MAIN && pindexLast->nHeight > 10615) ||
+                 (Params().NetworkID() == CBaseChainParams::TESTNET && pindexLast->nHeight > 55119))) {
             nTargetSpacing = Params().TargetSpacing();
             nTargetTimespan = Params().TargetTimespan();;
         }
