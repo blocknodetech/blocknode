@@ -44,18 +44,18 @@ Instructions: Homebrew
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone https://github.com/Blocknode-Project/Blocknode.git
+        git clone https://github.com/blocknodetech/blocknode.git
         cd Blocknode
 
 2.  Make the Homebrew OpenSSL headers visible to the configure script  (do ```brew info openssl``` to find out why this is necessary, or if you use Homebrew with installation folders different from the default).
 
-        export LDFLAGS+=-L/usr/local/opt/openssl/lib
-        export CPPFLAGS+=-I/usr/local/opt/openssl/include
+        export LDFLAGS=-L/usr/local/opt/openssl/lib
+        export CPPFLAGS=-I/usr/local/opt/openssl/include
 
 3.  Build blocknoded:
 
         ./autogen.sh
-        ./configure --with-gui=qt5
+        ./configure --with-gui=qt5 --enable-debug
         make
 
 4.  It is also a good idea to build and run the unit tests:
